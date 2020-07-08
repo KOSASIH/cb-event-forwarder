@@ -830,6 +830,7 @@ func ParseConfig(fn string) (Configuration, error) {
 		bundleSizeMax, err := key.Int64()
 		if err == nil {
 			config.BundleSizeMax = bundleSizeMax
+			log.Debugf("Bundle size max is set to  %d", config.BundleSizeMax)
 		}
 	}
 
