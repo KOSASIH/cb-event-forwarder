@@ -91,6 +91,17 @@ func setupMetrics() {
 		}
 	})
 
+	metrics.Register("running config",
+		expvar.Func(func() interface{} {
+			res := make(map[string]interface{}, 0)
+			res["OutputType"] = config.OutputType
+			res["OutputFormat"] = config.OutputFormat
+			res["BundleSizeMax"] = config.BundleSizeMax
+			res["CompressionLevel"] = config.CompressionLevel
+			res["UploadEmptyFiles"] = config.UploadEmptyFiles
+			return res
+		}))
+
 	metrics.RegisterRuntimeMemStats(metrics.DefaultRegistry)
 
 	metrics.Register("connection_status",
