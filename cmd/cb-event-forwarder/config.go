@@ -831,7 +831,11 @@ func ParseConfig(fn string) (Configuration, error) {
 		if err == nil {
 			config.BundleSizeMax = bundleSizeMax
 			log.Debugf("Bundle size max is set to  %d", config.BundleSizeMax)
+		} else {
+			log.Debugf("Bundle size max left at default")
 		}
+	} else {
+		log.Debugf("Didn't find bundle size max")
 	}
 
 	// default 5 minute send interval
